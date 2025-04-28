@@ -1,0 +1,17 @@
+1.  A breakdown of how your script handles arguments and options:
+
+The script will first check if the first argument is `--help` and if it is then it will call the `Syntax` function otherwise it will move on to the next condition and check if the argument is `-n`, If it is then it will set the variable `show_line_numbers` to true otherwise it will move on to the next condition and check if the argument is `-v` and if it is then it will set `invert_search` to true otherwise it will move on to the last condition and check if the argument is `-nv` or `-vn` and if so it will set both variables to true.
+
+The variables will be handled inside the while loop in if conditions to print the correct/desired output
+
+
+
+2.  A short paragraph: If you were to support regex or -i/-c/-l options, how would your structure change?
+
+We can use `getopts` for cleaner and easier option handling. We can also use awk and sed as they're powerful tools
+
+
+
+3.  What part of the script was hardest to implement and why?
+
+the `Highlight` function as I had to figure out how to exclude special characters and use awk

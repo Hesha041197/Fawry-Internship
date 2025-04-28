@@ -2,9 +2,12 @@
 
 # Syntax function to show the correct syntax to use with the command
 Syntax(){
-	echo "Syntax: $0 search_term file"
-	echo "Syntax: $0 -n search_term file"
-	echo "Syntax: $0 -v search_term file"
+	echo "Usage: $0 [-n] [-v] search_term file"
+    	echo ""
+    	echo "Options:"
+    	echo "  -n    Show line numbers with matches."
+    	echo "  -v    Invert match (show non-matching lines)."
+    	echo "  --help  Show this help message."
 }
 
 # CheckArg function to check if the correct number of arguments is provided
@@ -55,17 +58,29 @@ invert_search=false      # Set default: normal search (not inverted)
 # If the user asks for help
 if [ "$1" == "--help" ]; then
 	Syntax
-	exit
+	exit 0
 
 # If the first argument is "-n" (show line numbers)
 elif [ "$1" == "-n" ]; then
 	show_line_numbers=true
 	shift 1  # Shift arguments to skip processed option
+	
+	if [ "$1" == "-v" ]; then
+		invert_search=true
+		shift 1  # Shift arguments to skip processed option
+	fi
+		
 
 # If the first argument is "-v" (invert search)
 elif [ "$1" == "-v" ]; then
 	invert_search=true
 	shift 1  # Shift arguments to skip processed option
+	
+	if [ "$1" == "-n" ]; then
+		show_line_numbers=true
+		shift 1  # Shift arguments to skip processed option
+	fi
+
 
 # If both "-n" and "-v" options are provided together
 elif [ "$1" == "-nv" -o "$1" == "-vn" ]; then
