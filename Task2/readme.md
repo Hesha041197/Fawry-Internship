@@ -6,6 +6,7 @@
 - [2. Service Reachability Diagnosis](#2-service-reachability-diagnosis)
 - [3. Trace and List Possible Causes for Unreachability](#3-trace-and-list-possible-causes-for-unreachability)
 - [4. Proposed Fixes](#4-proposed-fixes)
+- [5. Key Diagnosis Based on the Scenario](#5-key-diagnosis-based-on-the-scenario)
 - [Bonus: DNS Bypass and Persistent DNS Configuration](#bonus-dns-bypass-and-persistent-dns-configuration)
 - [Notes](#notes)
 
@@ -108,7 +109,7 @@ Add the following line:
 - Run `docker ps` to check if the `internal-web` container is running.
 
 **Fix:**  
-If not running, start or recreate the container:
+If not running, start the container:
 
     docker start <container name/id>
 
@@ -155,7 +156,7 @@ Make sure the line reads:
 **Diagnosis:**  
 - Check firewall status:
 
-    sudo ufw status
+    `sudo ufw status`
 
 Look for any rules blocking port 8080.
 
@@ -168,6 +169,20 @@ Allow traffic on port 8080:
 Then verify:
 
     sudo ufw status
+
+---
+
+## 5. Key Diagnosis Based on the Scenario
+
+In the screenshots provided, it is evident that:
+
+- We can **ping the server using its IP address**.
+- We **cannot reach the server using the domain name** (`internal.example.com`).
+
+**Conclusion:**  
+This clearly indicates a **DNS resolution problem**, not a network or service availability issue.
+
+✅ **Applying Fix 4.1 (DNS Not Properly Resolving)** — by correctly setting up the `/etc/hosts` entry — will resolve this issue.
 
 ---
 
@@ -225,3 +240,9 @@ To simulate "Host Not Found", simply remove or comment the `internal.example.com
 
 ---
 
+## Author
+
+**Muhammad Ahmad Hesham**  
+- Developed during the **Fawry Internship Program** 2025.
+
+---

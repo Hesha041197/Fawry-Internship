@@ -15,6 +15,7 @@ A custom Bash script that extends and simplifies the functionality of `grep`, of
 - [Error Handling](#error-handling)
 - [Design Decisions](#design-decisions)
 - [Why Use mygrep.sh?](#why-use-mygrepsh)
+- [Additional Notes](#additional-notes)
 - [Author](#author)
 
 ---
@@ -141,7 +142,7 @@ It sets flags (`show_line_numbers`, `invert_search`) accordingly and shifts posi
 
 **2. Validate Inputs**  
 It ensures:
-- Correct number of arguments provided.
+- Correct number of arguments is provided.
 - The specified file exists and is a regular file.
 
 Otherwise, it shows usage instructions and exits gracefully.
@@ -190,11 +191,19 @@ This improves user experience and prevents confusing failures.
 
 ---
 
-## Author
+## Additional Notes
 
-**Hesha**  
-- Developed during the **Fawry Internship Program** 2025.  
-- Focused on improving Bash scripting, text parsing, user experience, and CLI tool design.
+- **Reflective Section**:  
+  The answer to the reflective section is provided in a **separate file** named **reflective_section**.
+
+- **getopts Optimization**:  
+  A **getopts-enhanced version** of this script is available in a **separate file** named **getopts.sh**.
 
 ---
 
+## Author
+
+**Muhammad Ahmad Hesham**  
+- Developed during the **Fawry Internship Program** 2025.
+
+---
